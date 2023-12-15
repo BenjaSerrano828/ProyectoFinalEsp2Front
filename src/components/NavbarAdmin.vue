@@ -1,11 +1,9 @@
-<script setup>
-//js
-</script>
+<script setup></script>
 
 <template>
   <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
     <div class="container-fluid">
-      <RouterLink to="/landingPage">
+      <RouterLink to="/landingPageAdmin">
         <a class="navbar-brand" href="#">
           <img
             src="https://cdn-icons-png.flaticon.com/512/183/183338.png"
@@ -32,14 +30,30 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/studentsListPage">Students List</a
-            ><!--active si le pones active al navlink se pone blanco-->
+            <router-link to="/studentsListPage"
+              ><a class="nav-link">Students List</a></router-link
+            >
+            <!--active si le pones active al navlink se pone blanco-->
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/scheduleViewPage">Schedule</a>
+            <router-link to="/scheduleViewPage"
+              ><a class="nav-link">Schedule</a></router-link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/profilePage">Profile</a>
+            <router-link to="/profilePage"
+              ><a class="nav-link">Profile</a></router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link to="/addStudentPage"
+              ><a class="nav-link">Add Student</a></router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link to="/createNewsPage"
+              ><a class="nav-link">Create News</a></router-link
+            >
           </li>
           <!--  <li class="nav-item">
             <a

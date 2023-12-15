@@ -17,7 +17,16 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/LandingPage.vue')
+      component: () => import('../views/LandingPage.vue'),
+      props: (route) => ({ isAdmin: route.query.isAdmin === 'true' }),
+    },
+    {
+      path: '/landingPageAdmin',
+      name: 'landingPageAdmin',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/LandingPageAdmin.vue'),
     },
     {
       path: '/addStudentPage',
@@ -83,7 +92,6 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/ProfilePage.vue')
     },
-    
     {
       path: '/scheduleViewPage',
       name: 'scheduleViewPage',

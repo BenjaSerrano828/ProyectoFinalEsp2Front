@@ -1,5 +1,36 @@
 <script setup>
-//js
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import axios from "axios";
+
+const email = ref("");
+const password = ref("");
+const router = useRouter();
+
+const login = async () => {
+  try {
+    const response = await axios.post("http://localhost:3005/auth/login", {
+      email: email.value,
+      password: password.value,
+    });
+    const isAdmin = response.data.user.isAdmin;
+    const token = response.data.token;
+
+    localStorage.setItem("userToken", token);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    console.log(isAdmin);
+
+    if(isAdmin) {
+      router.push('/LandingPageAdmin');
+    }else{
+      router.push('/LandingPage');
+    }
+
+    //router.push({ name: 'landingPage', query: { isAdmin } });  
+  } catch (error) {
+    console.error("Error al iniciar sesión: ", error);
+  }
+};
 </script>
 
 <template>
@@ -23,17 +54,24 @@
           type="text"
           id="login"
           class="fadeIn second"
-          name="login"
-          placeholder="login"
+          name="email"
+          placeholder="Ingrese su correo electrónico"
+          v-model="email"
         />
         <input
-          type="text"
+          type="password"
           id="password"
           class="fadeIn third"
           name="login"
-          placeholder="password"
+          placeholder="Ingrese su contraseña"
+          v-model="password"
         />
-        <input type="submit" class="fadeIn fourth" value="Log In" />
+        <input
+          type="submit"
+          class="fadeIn fourth"
+          value="Log In"
+          @click.prevent="login"
+        />
       </form>
 
       <!-- Remind Passowrd -->
@@ -164,6 +202,26 @@ input[type="reset"]:active {
 }
 
 input[type="text"] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+input[type="password"] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;

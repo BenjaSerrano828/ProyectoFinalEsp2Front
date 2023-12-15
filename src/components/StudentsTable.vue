@@ -49,7 +49,7 @@ const handleDeleteUser = async () => {
       <td>{{props.email}}</td>
       <td>{{ props.phone }}</td>
       <td><button type="button" class="btn btn-danger" @click="handleDeleteUser">Delete</button>
-        <RouterLink to="/editProfilePage4">
+        <RouterLink to="/editProfilePage">
             <button type="button" class="btn btn-warning editButton">Edit</button>
         </RouterLink>
     </td>

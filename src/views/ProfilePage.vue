@@ -1,9 +1,7 @@
 <script setup>
-import Navbar from "../components/Navbar.vue";
+import Navbar from "../components/NavbarAdmin.vue";
 import UserCard from "../components/UserCard.vue";
-import users from '../assets/json/users';
-
-
+import users from "../assets/json/users";
 </script>
 
 <template>
@@ -15,7 +13,9 @@ import users from '../assets/json/users';
     <div class="UserCardContainer">
       <div class="NewsCardContainer">
         <UserCard
-         v-for="user in users" :key="user.id" :user="user"
+          v-for="user in users"
+          :key="user.id"
+          :user="user"
           class="NewsCard"
           :name="user.name"
           :rut="user.rut"
@@ -24,8 +24,16 @@ import users from '../assets/json/users';
           :phone="user.phone"
           :image="user.image"
         />
-        <button type="button" class="btn btn-danger DeleteButton" @click="handleDeleteNews" >Delete Student</button>
-        <button type="button" class="btn btn-warning EditButton">Edit Student </button>
+        <button
+          type="button"
+          class="btn btn-danger DeleteButton"
+          @click="handleDeleteNews"
+        >
+          Delete Student
+        </button>
+        <button type="button" class="btn btn-warning EditButton">
+          Edit Student
+        </button>
       </div>
     </div>
   </div>

@@ -1,10 +1,9 @@
 <script setup>
-import Navbar from "../components/Navbar.vue";
 import NewsCard from "../components/NewsCard.vue";
 import { news } from "../assets/json/news.js";
 import NavbarAdmin from "@/components/NavbarAdmin.vue";
 
-const props = defineProps(["isAdmin"]);
+const props = defineProps(['isAdmin']);
 const admin = props.isAdmin;
 console.log(admin);
 
@@ -27,7 +26,7 @@ console.log(admin);
 </script>
 
 <template>
-  <component :is="admin ? NavbarAdmin : Navbar" />
+    <NavbarAdmin></NavbarAdmin>
   <div class="PageContainer">
     <div class="PageTitleContainer">
       <div class="titleTextContainer"><h1>News</h1></div>
@@ -67,7 +66,7 @@ console.log(admin);
 <style>
 .CreateButton {
   position: relative;
-  left: 400%;
+  left: 30%;
 }
 .DeleteButton {
 }

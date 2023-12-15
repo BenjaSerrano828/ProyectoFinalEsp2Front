@@ -1,11 +1,38 @@
 <script setup>
-import Navbar from "../components/Navbar.vue";
+import Navbar from "../components/NavbarAdmin.vue";
+import { ref } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const name = ref("");
+const email = ref("");
+const address = ref("");
+const phone = ref("");
+const password = ref("");
+const isAdmin = ref();
+
+const registerUser = async () => {
+  try {
+    const response = await axios.post("http://localhost:3005/auth/register", {
+      name: name.value,
+      email: email.value,
+      address: address.value,
+      phone: phone.value,
+      password: password.value,
+      isAdmin: isAdmin.value,
+    });
+    console.log(response);
+  } catch (error) {
+    console.log("Error al registrar usuario", error);
+  }
+};
 </script>
 
 <template>
   <Navbar />
   <div class="container">
-    <form id="contact" action="" method="post">
+    <form id="contact">
       <h3>Add User</h3>
       <h4>Create a user with his information</h4>
       <fieldset>
@@ -15,6 +42,7 @@ import Navbar from "../components/Navbar.vue";
           tabindex="1"
           required
           autofocus
+          v-model="name"
         />
       </fieldset>
       <fieldset>
@@ -26,6 +54,7 @@ import Navbar from "../components/Navbar.vue";
           type="email"
           tabindex="3"
           required
+          v-model="email"
         />
       </fieldset>
       <fieldset>
@@ -34,6 +63,7 @@ import Navbar from "../components/Navbar.vue";
           type="tel"
           tabindex="4"
           required
+          v-model="phone"
         />
       </fieldset>
       <fieldset>
@@ -42,6 +72,7 @@ import Navbar from "../components/Navbar.vue";
           type="text"
           tabindex="5"
           required
+          v-model="address"
         />
       </fieldset>
       <fieldset>
@@ -50,12 +81,13 @@ import Navbar from "../components/Navbar.vue";
           type="password"
           tabindex="6"
           required
+          v-model="password"
         />
       </fieldset>
       <fieldset>
-        <select name="select">
-          <option value="value1" selected>Is Admin</option>
-          <option value="value2" >Is Student</option>
+        <select name="select" v-model="isAdmin">
+          <option value="true" selected>Is Admin</option>
+          <option value="false">Is Student</option>
         </select>
       </fieldset>
       <fieldset>
@@ -64,6 +96,7 @@ import Navbar from "../components/Navbar.vue";
           type="submit"
           id="contact-submit"
           data-submit="...Sending"
+          @click.prevent="registerUser"
         >
           Submit
         </button>

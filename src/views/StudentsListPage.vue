@@ -1,5 +1,5 @@
 <script setup>
-import Navbar from "../components/Navbar.vue";
+import Navbar from "../components/NavbarAdmin.vue";
 import StudentsTable from "../components/StudentsTable.vue";
 import users from "../assets/json/users";
 </script>
