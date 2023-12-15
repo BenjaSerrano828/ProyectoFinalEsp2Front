@@ -1,0 +1,38 @@
+[
+    {
+
+    "id" : 1,
+    "email" : "email@yo.cl",
+    "password" : "panconqeso",
+    "name" : "sebi",
+    "address" : "uruguay 1111",
+    "isAdmin" : "true",
+    "rut" : "19914277-1",
+    "phone" : "97736893",
+    "image" : "https://media.gq.com.mx/photos/624f1761a16e9ddaa899cd19/16:9/w_2560%2Cc_limit/GettyImages-1325105287.jpg"
+},
+{
+    "id": 2,
+    "email": "otroemail@email.com",
+    "password": "clave_segura",
+    "name": "Juan",
+    "address": "Calle Principal 123",
+    "isAdmin": "false",
+    "rut": "12345678-9",
+    "phone": "987654321",
+    "image": "https://ejemplo.com/imagen2.jpg"
+},
+{
+    "id": 3,
+    "email": "usuario@dominio.com",
+    "password": "mi_password",
+    "name": "Ana",
+    "address": "Avenida Central 567",
+    "isAdmin": "false",
+    "rut": "87654321-0",
+    "phone": "555888777",
+    "image": "https://ejemplo.com/imagen3.jpg"
+}
+
+
+]
